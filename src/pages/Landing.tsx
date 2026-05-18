@@ -73,16 +73,16 @@ export default function Landing() {
   return (
     <div className="space-y-24">
       {/* Hero Section */}
-      <section className="relative overflow-hidden rounded-[40px] bg-white border border-[#D9C5A0]/20 shadow-ambient p-12 md:p-24 flex flex-col items-center text-center gap-8">
+      <section className="relative overflow-hidden rounded-[32px] md:rounded-[40px] bg-white border border-[#D9C5A0]/20 shadow-ambient p-8 md:p-24 flex flex-col items-center text-center gap-8">
         {/* Background decorative elements */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFE8BE]/30 blur-3xl -z-10" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-50 blur-3xl -z-10" />
 
-        <div className="space-y-8 max-w-4xl z-10">
+        <div className="space-y-6 md:space-y-8 max-w-4xl z-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-[#FFE8BE] text-[#406AAF] text-xs font-bold tracking-[0.2em] uppercase rounded-full"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[#FFE8BE] text-[#406AAF] text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase rounded-full"
           >
             <Star size={14} fill="currentColor" />
             The Photoshop Authority for BSIT
@@ -92,7 +92,7 @@ export default function Landing() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="font-display text-6xl md:text-8xl font-bold tracking-tighter text-[#2D3436] leading-none"
+            className="font-display text-4xl sm:text-6xl md:text-8xl font-bold tracking-tighter text-[#2D3436] leading-none"
           >
             Master the Pixel at Your <span className="text-[#427AB5]">Own Pace.</span>
           </motion.h1>
@@ -101,7 +101,7 @@ export default function Landing() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-[#2D3436]/60 leading-relaxed max-w-3xl mx-auto"
+            className="text-lg md:text-xl text-[#2D3436]/60 leading-relaxed max-w-3xl mx-auto"
           >
             From digital foundations to high-end CGI post-production. 
             Join the premier training ecosystem refined for tomorrow's visual innovators.
@@ -115,11 +115,11 @@ export default function Landing() {
           >
             <Link 
               to="/auth" 
-              className="px-10 py-5 bg-primary-blue text-white rounded-xl font-bold text-lg hover:bg-deep-blue transition-all shadow-xl shadow-blue-500/20 active:scale-95"
+              className="px-8 md:px-10 py-4 md:py-5 bg-primary-blue text-white rounded-xl font-bold text-base md:text-lg hover:bg-deep-blue transition-all shadow-xl shadow-blue-500/20 active:scale-95"
             >
               Start Your Journey
             </Link>
-            <button className="px-10 py-5 border-2 border-[#D9C5A0]/30 text-[#2D3436] rounded-xl font-bold text-lg hover:bg-[#FFE8BE]/20 transition-all">
+            <button className="px-8 md:px-10 py-4 md:py-5 border-2 border-[#D9C5A0]/30 text-[#2D3436] rounded-xl font-bold text-base md:text-lg hover:bg-[#FFE8BE]/20 transition-all font-display">
               Browse Curriculum
             </button>
           </motion.div>
@@ -127,13 +127,13 @@ export default function Landing() {
       </section>
 
       {/* Category Grid */}
-      <section className="space-y-12">
+      <section className="space-y-8 md:space-y-12">
         <div className="text-center space-y-4">
-          <h2 className="font-display text-4xl font-bold text-[#2D3436]">Choose Your Proficiency</h2>
-          <p className="text-[#2D3436]/60">Sequential pathways designed to take you from amateur to industry-ready.</p>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-[#2D3436]">Choose Your Proficiency</h2>
+          <p className="text-sm md:text-base text-[#2D3436]/60">Sequential pathways designed to take you from amateur to industry-ready.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {categories.map((cat, i) => {
             const tierLessons = lessons.filter(l => l.tier === cat.tier);
             return (
@@ -143,7 +143,7 @@ export default function Landing() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -8 }}
-                className="bg-white border border-[#D9C5A0]/30 p-8 rounded-3xl shadow-ambient group cursor-pointer transition-all hover:border-[#427AB5]/50"
+                className="bg-white border border-[#D9C5A0]/30 p-6 md:p-8 rounded-[32px] shadow-ambient group cursor-pointer transition-all hover:border-[#427AB5]/50"
               >
                 <div className="flex justify-between items-start mb-6">
                   <div className={cn("p-3 rounded-2xl text-white shadow-lg", cat.color)}>
@@ -179,13 +179,13 @@ export default function Landing() {
 
       {/* Featured Modules */}
       {lessons.length > 0 && (
-        <section className="space-y-12">
-          <div className="flex items-end justify-between gap-6">
+        <section className="space-y-8 md:space-y-12">
+          <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
             <div className="space-y-2">
-              <h2 className="font-display text-4xl font-bold text-[#2D3436]">Featured Modules</h2>
-              <p className="text-[#2D3436]/60">Hand-picked lessons to accelerate your creative workflow.</p>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-[#2D3436]">Featured Modules</h2>
+              <p className="text-sm md:text-base text-[#2D3436]/60">Hand-picked lessons to accelerate your creative workflow.</p>
             </div>
-            <Link to="/auth" className="hidden md:flex items-center gap-2 text-sm font-bold text-[#427AB5] hover:gap-3 transition-all group">
+            <Link to="/auth" className="flex items-center gap-2 text-sm font-bold text-[#427AB5] hover:gap-3 transition-all group">
               View All Modules <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>

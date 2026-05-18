@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { CheckCircle2, PlayCircle, Loader2 } from 'lucide-react';
+import { CheckCircle2, PlayCircle, Loader2, BookOpen } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
@@ -65,10 +65,10 @@ export default function MyProgress() {
   }
 
   return (
-    <div className="space-y-12">
-      <header className="space-y-4">
-        <h1 className="font-display text-4xl font-bold text-[#2D3436]">Your Learning Journey</h1>
-        <p className="text-[#2D3436]/50">
+    <div className="space-y-8 md:space-y-12">
+      <header className="space-y-3 md:space-y-4">
+        <h1 className="font-display text-3xl md:text-4xl font-bold text-[#2D3436]">Your Learning Journey</h1>
+        <p className="text-sm md:text-base text-[#2D3436]/50">
           Track your progress and pick up where you left off, <span className="text-[#427AB5] font-bold">{displayName}</span>.
         </p>
       </header>
@@ -88,12 +88,23 @@ export default function MyProgress() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.05 }}
-                className="bg-white border border-[#D9C5A0]/20 rounded-3xl overflow-hidden shadow-ambient group"
+                className="bg-white border border-[#D9C5A0]/20 rounded-3xl overflow-hidden shadow-ambient group hover:border-[#427AB5]/40 transition-all"
               >
-                <div className="relative aspect-video overflow-hidden bg-slate-200">
-                  <img src={`https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=400&q=80`} alt={lesson.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-60" />
+                <div className="relative aspect-video overflow-hidden bg-slate-900">
+                  {lesson.thumbnail_url ? (
+                    <img 
+                      src={lesson.thumbnail_url} 
+                      alt={lesson.title} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-800 to-slate-900">
+                      <BookOpen size={40} className="text-[#427AB5]/20" />
+                    </div>
+                  )}
                   {isCompleted && (
-                    <div className="absolute top-4 right-4 bg-green-500 text-white p-1 rounded-full shadow-lg">
+                    <div className="absolute top-4 right-4 bg-green-500 text-white p-1.5 rounded-full shadow-lg z-10">
                       <CheckCircle2 size={16} />
                     </div>
                   )}

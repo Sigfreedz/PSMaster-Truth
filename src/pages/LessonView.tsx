@@ -1,5 +1,5 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { CheckCircle, Clock, ChevronRight, Share2, Bookmark, Loader2, ArrowLeft, ArrowRight, Check, BookOpen, Trophy } from 'lucide-react';
+import { CheckCircle, Clock, ChevronRight, Loader2, ArrowLeft, ArrowRight, Check, BookOpen, Trophy } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { supabase } from '../lib/supabase';
@@ -131,9 +131,9 @@ export default function LessonView() {
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className="fixed bottom-12 left-1/2 -translate-x-1/2 z-50 pointer-events-none"
+            className="fixed bottom-12 left-4 right-4 md:left-1/2 md:-translate-x-1/2 z-50 pointer-events-none flex justify-center"
           >
-            <div className="bg-[#1A1E21] text-white px-8 py-6 rounded-[32px] shadow-2xl flex items-center gap-6 border border-white/10 overflow-hidden relative">
+            <div className="bg-[#1A1E21] text-white px-6 md:px-8 py-4 md:py-6 rounded-3xl md:rounded-[32px] shadow-2xl flex items-center gap-4 md:gap-6 border border-white/10 overflow-hidden relative max-w-lg w-full">
               <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/10 rounded-full blur-2xl -mr-16 -mt-16" />
               <div className="w-12 h-12 bg-green-500 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-green-500/20">
                 <Trophy size={24} />
@@ -147,25 +147,17 @@ export default function LessonView() {
         )}
       </AnimatePresence>
 
-      <div className="mb-8 flex items-center justify-between">
+      <div className="mb-4 md:mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-2 text-[#2D3436]/50 hover:text-[#427AB5] font-bold transition-all text-sm group">
           <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
           Back to Curriculum
         </Link>
-        <div className="flex gap-4">
-          <button className="p-3 bg-white border border-[#D9C5A0]/30 rounded-xl text-[#2D3436]/50 hover:text-[#427AB5] transition-all">
-            <Bookmark size={18} />
-          </button>
-          <button className="p-3 bg-white border border-[#D9C5A0]/30 rounded-xl text-[#2D3436]/50 hover:text-[#427AB5] transition-all">
-            <Share2 size={18} />
-          </button>
-        </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12">
         {/* Main Content */}
-        <div className="lg:col-span-8 space-y-12">
-          <header className="bg-[#1A1E21] rounded-[40px] p-12 text-white shadow-2xl relative overflow-hidden">
+        <div className="lg:col-span-8 space-y-8 md:space-y-12">
+          <header className="bg-[#1A1E21] rounded-[32px] md:rounded-[40px] p-8 md:p-12 text-white shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#427AB5]/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
             
             <div className="relative z-10 space-y-6">
@@ -181,7 +173,7 @@ export default function LessonView() {
                 </div>
               )}
               
-              <div className="flex items-center gap-4">
+              <div className="flex flex-wrap items-center gap-3 md:gap-4">
                 <div className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-lg border border-white/10">
                   <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
                   <span className="text-[10px] font-black uppercase tracking-widest text-white/90">Theory Module</span>
@@ -201,16 +193,16 @@ export default function LessonView() {
                 )}
               </div>
               
-              <div className="space-y-2">
-                <h1 className="font-display text-5xl font-bold text-white leading-tight">
+              <div className="space-y-4">
+                <h1 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
                   {lesson.title}
                 </h1>
-                <p className="text-xl text-white/60 leading-relaxed font-medium italic border-l-4 border-[#FFE8BE] pl-6">
+                <p className="text-lg md:text-xl text-white/60 leading-relaxed font-medium italic border-l-4 border-[#FFE8BE] pl-4 md:pl-6">
                   {lesson.description}
                 </p>
               </div>
 
-              <div className="flex items-center gap-6 pt-4 border-t border-white/10">
+              <div className="flex flex-wrap items-center gap-4 md:gap-6 pt-4 border-t border-white/10">
                 <div className="flex items-center gap-2 text-white/60 text-[10px] font-black uppercase tracking-widest">
                   <Clock size={16} />
                   <span>~8 min module</span>
@@ -223,7 +215,7 @@ export default function LessonView() {
             </div>
           </header>
 
-          <article className="prose prose-slate max-w-none bg-white border border-[#D9C5A0]/30 rounded-[40px] p-12 shadow-ambient">
+          <article className="prose prose-slate max-w-none bg-white border border-[#D9C5A0]/30 rounded-[32px] md:rounded-[40px] p-6 md:p-12 shadow-ambient">
             {lesson.steps && lesson.steps.length > 0 && (
               <div className="mb-12 not-prose">
                 <h2 className="text-xs font-black uppercase text-[#427AB5] tracking-[0.2em] mb-6 flex items-center gap-2">
@@ -263,17 +255,17 @@ export default function LessonView() {
               </div>
             )}
 
-            <div className="mt-16 pt-12 border-t border-[#D9C5A0]/20 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="mt-12 md:mt-16 pt-8 md:pt-12 border-t border-[#D9C5A0]/20 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
               <div className="space-y-1 text-center md:text-left">
                 <p className="text-xs font-black uppercase text-[#427AB5] tracking-widest">Mastery progress</p>
-                <p className="text-sm text-[#2D3436]/50">Found this lesson helpful? Mark it as finished.</p>
+                <p className="text-xs md:text-sm text-[#2D3436]/50">Found this lesson helpful? Mark it as finished.</p>
               </div>
               
               <button 
                 onClick={handleComplete}
                 disabled={actionLoading || isCompleted}
                 className={cn(
-                  "px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-[0.2em] transition-all flex items-center gap-3",
+                  "w-full md:w-auto px-8 md:px-10 py-4 md:py-5 rounded-2xl font-black text-xs md:text-sm uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-3",
                   isCompleted 
                     ? "bg-[#FDFBF7] text-green-600 border border-green-200 cursor-default"
                     : "bg-primary-blue text-white shadow-xl shadow-blue-500/20 hover:scale-[1.02] active:scale-[0.98]"
@@ -287,15 +279,15 @@ export default function LessonView() {
         </div>
 
         {/* Sidebar - Up Next */}
-        <aside className="lg:col-span-4 space-y-8">
-          <div className="sticky top-24 space-y-8">
+        <aside className="lg:col-span-4 space-y-6 md:space-y-8">
+          <div className="lg:sticky lg:top-24 space-y-6 md:space-y-8">
             <div className="bg-white border border-[#D9C5A0]/30 rounded-[32px] overflow-hidden shadow-ambient">
-              <div className="p-8 border-b border-[#D9C5A0]/20 bg-[#FDFBF7]/50">
+              <div className="p-6 md:p-8 border-b border-[#D9C5A0]/20 bg-[#FDFBF7]/50">
                 <div className="flex items-center gap-2 text-[#427AB5] font-bold text-[10px] uppercase tracking-widest mb-2">
                   <BookOpen size={14} />
                   Curriculum Track
                 </div>
-                <h3 className="text-xl font-bold text-[#2D3436]">Path Progress</h3>
+                <h3 className="text-lg md:text-xl font-bold text-[#2D3436]">Path Progress</h3>
                 <div className="mt-6 flex items-center gap-2">
                   <div className="flex-1 h-2 bg-[#FDFBF7] rounded-full border border-[#D9C5A0]/10 overflow-hidden">
                     <motion.div 
@@ -304,11 +296,11 @@ export default function LessonView() {
                       className="h-full bg-[#427AB5]"
                     />
                   </div>
-                  <span className="text-[10px] font-bold text-[#2D3436]/40">TIER {lesson.tier[0]}</span>
+                  <span className="text-[10px] font-bold text-[#2D3436]/40 uppercase">Tier {lesson.tier[0]}</span>
                 </div>
               </div>
               
-              <div className="max-h-[500px] overflow-y-auto">
+              <div className="max-h-[400px] md:max-h-[500px] overflow-y-auto">
                 {relatedLessons.map((l, i) => {
                   const isCurrent = l.id === id;
                   return (

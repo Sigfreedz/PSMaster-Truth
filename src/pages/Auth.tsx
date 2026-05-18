@@ -96,7 +96,7 @@ export default function Auth() {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-white border border-[#D9C5A0]/40 rounded-[32px] p-10 shadow-ambient relative overflow-hidden"
+        className="bg-white border border-[#D9C5A0]/40 rounded-[28px] md:rounded-[32px] p-6 sm:p-10 shadow-ambient relative overflow-hidden"
       >
         {/* Background glow */}
         <div className="absolute top-0 right-0 w-32 h-32 bg-[#FFE8BE]/50 blur-3xl -z-10" />

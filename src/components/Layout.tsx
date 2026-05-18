@@ -10,7 +10,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="flex-grow pt-24 pb-12 px-6 max-w-7xl mx-auto w-full"
+        className="flex-grow pt-20 md:pt-24 pb-8 md:pb-12 px-4 md:px-6 max-w-7xl mx-auto w-full"
       >
         {children}
       </motion.main>
